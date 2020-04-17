@@ -1,6 +1,7 @@
 <?php
 require "connection.php";
 $id= $_GET["id"];
+
 $method= $_GET["method"];
     if ($method== "makeEnemy") {
         makeEnemy($id);
@@ -9,10 +10,11 @@ $method= $_GET["method"];
         makeFriend($id);
     }
     elseif ($method== "newEnemy") {
-        newEnemy($id);
+        newEnemy($id, $type_id);
     }
-
-
+    elseif ($method== "addSuper") {
+        addSuper($id);
+    }
 
 $test = $_GET['id'];
 //var_dump ($test);
@@ -31,16 +33,15 @@ function makeEnemy($id) {
     $result = $GLOBALS["conn"]->query($sql);
 }
 
-function makeFriend($id) {
+function newEnemy($id, $type_id) {
+    $sql = "INSERT INTO relationships (rel_id, hero1_id, hero2_id, type_id) VALUES ($rel_id, $hero_id, $hero2_id, $type_id)"; 
+    $result = $GLOBALS["conn"]->query($sql);
+}
+
+function addSuper($id) {
     $sql = "UPDATE relationships SET type_id = '1' WHERE rel_id = $id";
     $result = $GLOBALS["conn"]->query($sql);
 }
-
-function newEnemy($id) {
-    $sql = "INSERT INTO relationships (rel_id, hero1_id, hero2_id, type_id) VALUES ('$rel_id', '$hero_id', '$hero2_id', '$type_id')"; 
-    $result = $GLOBALS["conn"]->query($sql);
-}
-
 
 $conn->close();
 
