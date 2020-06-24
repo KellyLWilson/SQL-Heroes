@@ -39,7 +39,7 @@ if ($result->num_rows > 0) {
         $output = ""; 
         echo '<div class="row">';
         echo '<li class="pl-3">' .$row["name"] . '</li>';
-        echo "<a href='data.php?method=addEnemy&hero=" . $id . "&id=" . $row['rel_id'] . "'> Make Enemy</a>";
+        echo "<a href='data.php?method=makeEnemy&hero=" . $id . "&id=" . $row['rel_id'] . "'> Make Enemy</a>";
         echo '</div>';
     }
     echo $output;
@@ -60,7 +60,7 @@ if ($result->num_rows > 0) {
     echo "<div class='col-md-4 col-sm-12'>";
     echo "<h5>Enemies</h5>";
     while ($row = $result->fetch_assoc()) {
-        $output .= "<li class='pl-3'>$row[name]</li><a href='data.php?method=addFriend&hero=" . $id . "&id=" . $row['rel_id'] . "'>Create Alliance</a>";
+        $output .= "<li class='pl-3'>$row[name]</li><a href='data.php?method=makeFriend&hero=" . $id . "&id=" . $row['rel_id'] . "'>Create Alliance</a>";
     }
 
     echo $output;
@@ -108,9 +108,9 @@ if ($result->num_rows > 0) {
         $hero = "hero.php?id=" . $row["id"];
         $output = "";
             echo '<li>  ' . $row["name"] . '    </li>';
-            echo '<a href="data.php?method=newFriend&hero=' . $id . '&id=' . $row['id'] .' ">Create Alliance</a>';
+            echo '<a href="data.php?method=makeFriend&hero=' . $id . '&id=' . $row['rel_id'] .' ">Create Alliance</a>';
             echo '<br>';
-            echo '<a href="data.php?method=newEnemy&hero=' . $id . '&id=' . $row['id'] .' ">Enemy Alert!!!</a>';
+            echo '<a href="data.php?method=newEnemy&hero=' . $id . '&id=' . $row['rel_id'] .' ">Enemy Allert!!!</a>';
             echo '</li>';
 }
 } else {

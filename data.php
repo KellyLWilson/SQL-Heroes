@@ -38,7 +38,7 @@ function newEnemy($id, $type_id) {
     $result = $GLOBALS["conn"]->query($sql);
 }
 
-function addSuper($id) {
+function makeFriend($id) {
     $sql = "UPDATE relationships SET type_id = '1' WHERE rel_id = $id";
     $result = $GLOBALS["conn"]->query($sql);
 }
